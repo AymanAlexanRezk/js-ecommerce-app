@@ -12,11 +12,11 @@ const HomeScreen = {
             (product) => `
               <li>
                 <div class="product">
-                  <a href="/product/${product._id}">
+                  <a href="/#/product/${product._id}">
                     <img src="${product.image}" alt="${product.description}" />
                   </a>
                   <div class="product-name">
-                    <a href="/products/${product._id}">${product.name}</a>
+                    <a href="/#/product/${product._id}">${product.name}</a>
                   </div>
                   <div class="product-brand">${product.brand}</div>
                   <div class="product-price">${product.price}</div>
