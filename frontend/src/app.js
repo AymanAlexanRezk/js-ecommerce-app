@@ -9,7 +9,7 @@ const routes = {
   '/product/:id': ProductScreen,
 };
 
-const router = () => {
+const router = async () => {
   const request = parseRequestUrl();
   const parseUrl =
     (request.resource ? `/${request.resource}` : '/') +
@@ -18,8 +18,10 @@ const router = () => {
 
   //* Compare with the routes object:
   const screen = routes[parseUrl] ? routes[parseUrl] : NotFoundScreen;
+
   const main = document.getElementById('main-container');
-  main.innerHTML = screen.render(); // Instead of HomeScreen.render()
+  // The render() method inside HomeScreen is async, so we use await here.
+  main.innerHTML = await screen.render(); // Instead of HomeScreen.render()
 };
 
 window.addEventListener('load', router);

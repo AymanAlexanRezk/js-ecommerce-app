@@ -1,0 +1,49 @@
+# Create your project folder:
+    - js-ecommerce-app
+        - frontend
+            - src/index.html
+
+    >$ npm init (inside frontend folder)
+    >$ npm install live-server
+    - add start command: "live-server src --verbose"
+    >$ npm start
+
+# Website Initial Design
+   - src/style.css && link it to the index.html file
+
+# Create a Starting Static HomeScreen for products.
+
+# Render HomeScreen Dynamically
+   - src/data.js and export products as an array of objects
+   - src/screens/HomeScreen.js that render a product blueprint
+   - export HomeScreen as an object that has a render() method
+   - implement render() functionality and import data.js to access products array.
+        - HomeScreen.render() => return products mapped into list items.
+   - create app.js and link it to your index.html file as a module.
+   - Implement router() functionality and eventListener.
+
+# Url Routing
+   - Routes object as route:screen key-value pairs
+   - src/utils.js with exported parseRequestURL() => return url (resource, id and verb)
+   - Update router(): request = parseRequestURL()
+        - parsedUrl && compare with routes
+   - src/screens/Error404.js
+
+# Node.JS Server
+   >$ run npm init inside the root of your project folder
+   >$ npm install express
+   - Add start command: "node backend/server.js" to run the server.
+   - Add backend/server.js
+        - require express
+        - Move data.js from frontend to backend
+        - Add a get('/') route for /api/products
+   - backend/data.js: module.exports = { products: [{}, {}] } for Node
+   >$ run npm start
+
+# Request Products From Backend via AJAX request.
+    - HomeScreen.js render():
+         - render: async ()
+         - Fetch products from '/api/products'.
+               - By sending AJAX request  to the server to get data from backend.
+    - app.js: make router() async and call await screen.render()
+    >$ npm install cors && import it in server.js and use it.
